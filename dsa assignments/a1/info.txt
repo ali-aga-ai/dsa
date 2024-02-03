@@ -1,0 +1,4 @@
+Yes, that statement is correct. 
+The GNU Multiple Precision Arithmetic Library (GMP) provides a set of functions for performing basic arithmetic operations 
+(addition, subtraction, multiplication, and division) on integers and rational numbers with arbitrary precision. 
+It allows you to work with numbers that can be much larger than those supported by standard data types in languages like C and C++.

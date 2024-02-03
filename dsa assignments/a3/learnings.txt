@@ -1,0 +1,7 @@
+in general if there are things where u have to do anything with 'CONSECUTIVE' elements of an array or string, consider window sliding method
+
+window sliding method has O(n) complexity
+
+for pallindrome there is also grow from center method
+
+
