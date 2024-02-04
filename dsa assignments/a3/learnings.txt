@@ -5,3 +5,14 @@ window sliding method has O(n) complexity
 for pallindrome there is also grow from center method
 
 
+
+
+d.c
+
+sometimes u can be an idiot and apply window sliding when all u needed was two pointer
+
+scanf(" %[^\n]", str); // scan string till u find the first \n, not till u encounter first whitespace..
+the above is very important if u wann scan using %s and not for(%c).%s scans all elements(including whitespace) and stores it in str
+other wise if u were to do scanf("%s",str) it would simply scan till the first whitespace
+
+

@@ -1,4 +1,4 @@
-//incomplete
+//fucking basic ass two pointer Q
 
 #include <stdio.h>
 
@@ -10,11 +10,12 @@ int main() {
     
     char str[n];
     int spaces[n];
-    int j=0,i =0;
+    int j=1,i =0;
     scanf(" %c",&str[0]);
+    spaces[0] =0;
     for(i=1; i<n; i++){
         
-        scanf("%c",&str[i]);//using space skips whitespace chars including newline
+        scanf("%c",&str[i]);
         
         if(str[i]==' '){
             spaces[j] = i;
@@ -29,26 +30,35 @@ int main() {
         spaces[j++] = -1;
     }
     
+
     
-    for(int p=0; p<n; p++){
-        printf("%d  ", spaces[p]);
-    }
-    
-    
-    i=0,j=0;
+    i=0;j=1;
     char temp;
+    
+    int p = spaces[j]-1;
     
     while(i<n){
         
-        if(i<(spaces[j])/2){
+        if(i<p){
             temp =str[i];
-            str[i] = str[spaces[j]-i-1];
-            str[spaces[j]-i-1] = temp;
-            i++;
+            str[i++] = str[p];
+            str[p--] =temp;
         }
+        
         else{
+            if(spaces[j]==-1){
+                i=n;
+            }
+            else{
             i = spaces[j]+1;
-            j++;
+            }
+            if(spaces[j+1]==-1){
+                p=n-1;
+                j++;
+            }
+            else{
+                j++;
+                p = spaces[j]-1;}
         }
         
         

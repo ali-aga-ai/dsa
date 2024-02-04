@@ -1,0 +1,15 @@
+In discrete mathematics. We have posets in which not all elements are linked to others.
+
+we convert posets(partially ordered sets) to totally ordered sets using topological sorting
+
+each step of the way u take out the minimal element from the poset and add it to the top of another list
+
+this new list now contains the correct order
+
+
+This approach is fundamental in various applications, such as task scheduling, dependency
+resolution, and ensuring a consistent order in scenarios where not all elements have a direct relationship with one another.
+
+
+in questions:
+useful for scheduling
