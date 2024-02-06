@@ -16,3 +16,28 @@ the above is very important if u wann scan using %s and not for(%c).%s scans all
 other wise if u were to do scanf("%s",str) it would simply scan till the first whitespace
 
 
+
+
+O(logn) to fins power from basdse and exponent
+int power(int base, unsigned int exponent) {
+    int result = 1;
+    while (exponent > 0) {
+        if (exponent % 2 == 1) {
+            result = (result * base) ;
+        }
+        base = (base * base) ;
+        exponent /= 2;
+    }
+    return result;
+}
+
+
+O(n) method finding the number of '1' bits in a given number's binary form
+int countSetBits(long long num) {
+    int count = 0;
+    while (num) {
+        count += num & 1;
+        num >>= 1;
+    }
+    return count;
+}

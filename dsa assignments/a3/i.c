@@ -1,38 +1,5 @@
 #include<stdio.h>
 #include<gmp.h>
-float squareRoot(int number, int precision) {
-    int start = 0, end = number;
-    int mid;
-    float ans;
-
-    // Computing the integral part
-    while (start <= end) {
-        mid = (start + end) / 2;
-        if (mid * mid == number) {
-            ans = mid;
-            break;
-        }
-
-        if (mid * mid < number) {
-            start = mid + 1;
-            ans = mid;
-        } else {
-            end = mid - 1;// ans = mid would make ans greater than n
-        }
-    }
-
-    // Computing the fractional part
-    float increment = 0.1;
-    for (int i = 0; i < precision; i++) {
-        while (ans * ans <= number) {
-            ans += increment;
-        }
-        ans = ans - increment;
-        increment = increment / 10;
-    }
-
-    return ans;
-}
 
 int main(){
 
@@ -41,8 +8,7 @@ int main(){
     scanf("%d",&n);
 
     int a[n];
-    float root[n];
-    
+
     mpz_t mod_num, product,base, result;
 
     mpz_set_si(product, 1);  
@@ -53,7 +19,6 @@ int main(){
    for (int i=0; i < n; ++i){
 
         scanf("%d",&a[i]);
-        root[i] = squareRoot(a[i], 4);    
    }
    
 
@@ -63,7 +28,7 @@ int main(){
         
         int c=0;
         
-        for(int j=2; j<root[i]; j++){
+        for(int j=2; j*j<a[i]; j++){
             if(a[i]%j==0){
                 c=1;
                 count++;
@@ -99,3 +64,7 @@ int main(){
     mpz_clears(base, product, NULL);
     return 0;
 }
+
+
+//mpz_set_si for setting string to integer value
+//mpz_ t is the string/ 

@@ -29,7 +29,8 @@ int main() {
             left++;
         }
         
-        else if(sum1 == sum2){ans =sum1;
+        else if(sum1 == sum2){
+            ans =sum1; //storing values every time equal
             if(left!=right){
                 sum1+=a[left];
                 left++;
