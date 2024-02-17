@@ -1,4 +1,3 @@
-//this has the logic however condition that b>a is not clarified
 #include <stdio.h>
 #include<stdbool.h>
 

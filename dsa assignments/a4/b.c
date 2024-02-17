@@ -21,7 +21,7 @@ int packer(int arr[],int idx,int* box){
 			}
 		}
 		return m;
-	}
+	} 
 	int mb=1000000;
 	for(int i=0;i<k;i++){
 		box[i]+=arr[idx];
