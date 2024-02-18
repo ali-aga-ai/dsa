@@ -1,0 +1,1 @@
+for adding elements to linked lists first u need to create new node, then insert data, then begin do next prev whtv the fook
