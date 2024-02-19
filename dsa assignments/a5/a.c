@@ -58,30 +58,86 @@ int main() {
         scanf("%d", &val);
         add(&head2, val);
     }
-    
-   //whichever one has higher n will have head1 
-    
-    struct Node* big = (n>=m)? head1: head2;
-        struct Node* head = big;
 
-    struct Node* small = (n<m)? head1: head2;  
-    
-    int carry = 0;
-    
-    while(small!=NULL){
+     struct Node* first = head1;
+     struct Node* second = head2;
+     int carry=0;
+     int sum =0;
+
+    if(n>=m){    
+        while((first->next)!=NULL){
+            if(second!=NULL){
+                sum = first->data +second->data + carry;
+                carry = sum/10;
+                first->data = sum%10;
+                first = first->next;
+                second = second->next;
+            }
+            else{
+                sum = first->data +carry;
+                first->data = sum%10;
+                carry = sum/10;
+                first = first->next;
+            }
+        }
         
-        big->data = (big->data + small->data+ carry)%10;
         
-        carry = (big->data + small->data)/10;
         
-        big = big->next;
-        small = small->next;
+        if(n==m){
+        sum = first->data +second->data +carry;}
+        else{
+            sum = first->data+carry;
+            
+        }
+        carry = sum/10;
+        first->data = sum%10;
+        
+        
+        if(carry){
+            struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
+            new_node->data = carry;
+            new_node->next =NULL;
+            first->next = new_node;
+        }
+      printList(head1);  
     }
-    if(carry){
-        big->data+=1;
-    }
+    else{
+      while((second->next)!=NULL){
+            if(first!=NULL){
+                sum = second->data +first->data + carry;
+                carry = sum/10;
+                second->data = sum%10;
+                second = second->next;
+                first = first->next;
+            }
+            else{
+                sum = second->data +carry;
+                second->data = sum%10;
+                carry = sum/10;
+                second = second->next;
+            }
+        }
+        
+        
+            sum = second->data+carry;
+            
+       
+        carry = sum/10;
+        second->data = sum%10;
+        
+        
+        if(carry){
+            struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
+            new_node->data = carry;
+            new_node->next =NULL;
+            second->next = new_node;
+        }
+      printList(head2);  
+    }   
     
-    printList(head);
+    
+    
+    
     
     return 0;
 }
