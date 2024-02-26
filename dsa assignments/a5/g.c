@@ -59,6 +59,7 @@ int main() {
     struct Node* jim =head1;
     struct Node* dwight=head1;
     
+    //WE ARE COMPARING DATA VALUES BECAUSED OF UNIQUENESS 
     while (jim->data != b) {
             jim = jim->next; 
         }

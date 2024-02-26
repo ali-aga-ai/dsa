@@ -1,3 +1,5 @@
+//3 POINTER METHOD, PREV, CURRENT,NEXTT
+
 #include <stdio.h>
 #include <stdlib.h>
 

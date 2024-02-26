@@ -1,3 +1,5 @@
+//3 POINTER METHOD FIRST,SECOND,LAST
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -50,7 +52,7 @@ int main() {
         add(&head1, val);
     }
     
-    int p =k%n;
+    int p =k%n;//BECAUSE A COMPLETE ROTATION IS EQUIVALENT TO NO ROTATION
     
     //temp will be the starting point of the new linked list, from there we will print
     struct Node* temp = head1; // Head of the first linked list

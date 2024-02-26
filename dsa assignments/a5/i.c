@@ -1,3 +1,5 @@
+//FOR PALLINDROME BASIC 2 POINTER SYSTEM, BEGINNING END, ITERATE FRONT AND OPREV
+
 #include <stdio.h>
 #include <stdlib.h>
 

@@ -1,4 +1,3 @@
-//HALF COMPLETE
 #include <stdio.h>
 #include <stdlib.h>
 

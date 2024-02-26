@@ -1,3 +1,4 @@
+//JUST REMEMBER THAT HEAD1 CAN BE NULL, LAST CAN BE NULL, IF HEAD1=LAST THEN U HAVE TO TURN THEM BOTH TO NULL IN CASE OF DELETION
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -95,7 +96,7 @@ int main() {
         scanf("%d",&val);
         
         if(val == 1){
-            if (head1==NULL){
+            if (head1==NULL){//IMPORTANT CONDITION, BECAUSE WE OFTEN DELETE ELEMENTS, AND IT CAN RESULT IN AN EMPTY LIST
             struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
             scanf("%d",&val2);
             new_node->data = val2;
@@ -116,24 +117,28 @@ int main() {
             }
         }        
         if(val == 2){
+
+
             if (last==NULL){
-            struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
-            scanf("%d",&val2);
-            new_node->data = val2;
-            new_node->next = NULL;
-            new_node->prev =NULL;
-                last= new_node;
+                struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
+                scanf("%d",&val2);
+                new_node->data = val2;
+                new_node->next = NULL;
+                new_node->prev =NULL;
+                    last= new_node;
             }
             else{
             
-    struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
-            scanf("%d",&val2);
-            new_node->data = val2;
-            new_node->next = NULL;
-            last->next = new_node;
-            new_node->prev = last;
-            last =new_node;}
-        }        
+                struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
+                scanf("%d",&val2);
+                new_node->data = val2;
+                new_node->next = NULL;
+                last->next = new_node;
+                new_node->prev = last;
+                last =new_node;}
+        }    
+
+
         if(val == 3){
             if(head1==last){head1=NULL;
                 last=NULL;}

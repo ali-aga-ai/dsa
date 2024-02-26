@@ -49,8 +49,10 @@ int main() {
         add(&head1, val);
     }
     
+    // first will indicate fircst occurence of any new element
     struct Node* first = head1;
     struct Node* temp = first->next;
+    //temp is the one who is compared with first, so temp is generally after first
     
     while(temp!=NULL){
         
@@ -61,7 +63,7 @@ int main() {
         }
         
         else{
-            first = temp;
+            first = temp; //not equal indicates new unique number and hence new first
             temp = first->next;
         }
         

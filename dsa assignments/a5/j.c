@@ -1,3 +1,6 @@
+//IMPORTANT CONDITION:If there is no next song or no previous song, stay at the current.
+
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -71,6 +74,7 @@ int main() {
             new_node->next = temp->next;
             temp->next = new_node;
             new_node->prev = temp;
+            new_node->next->prev = temp;
         }        
         if(val == 3){
             struct Node *new_node = (struct Node *)malloc(sizeof(struct Node));

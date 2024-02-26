@@ -57,7 +57,7 @@ int main() {
     temp= head;
     
     int p =k-1;
-    while(n>1){
+    while(n>1){ // N SYMBOLISES NUMBER OF ELEMENTS LEFT
         if(p==1){
             deleteNode(temp,temp->next);
             p=k-1;
