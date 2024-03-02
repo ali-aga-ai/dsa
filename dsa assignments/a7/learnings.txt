@@ -1,0 +1,12 @@
+in general if questions have things like find min max, or sum of min/max using heaps can be useful
+
+
+
+void buildMaxHeap(int* a, int n) {
+    for (int i = n / 2; i >= 0; i--) {
+        Heapify(a, i, n);
+    }
+}
+
+start from n/2 to 0 not other way round cuz of inefficiencies
+

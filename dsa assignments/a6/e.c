@@ -100,10 +100,6 @@ void quickSort(int* a, int low, int high, int left) {
     }
 }
 
-
-
-
-
 int main() {
 
     int n;

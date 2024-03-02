@@ -1,3 +1,7 @@
+// learn insertion sort properly
+//temp is there just to transfer all info in the end into the main array
+// in this, instead of my idea of grouping up k sized elements what it does is the merge sort technique. start big, go smaller.
+// now if the lemgth of the smaller shit is lesser than or equal to k do insertion sort
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -43,7 +47,7 @@ void merge(int arr[], int temp[], int left, int mid, int right) {
 
 void mergeSort(int arr[], int temp[], int left, int right, int k) {
     if (left < right) {
-        if (right - left + 1 <= k) {
+        if (right - left + 1 <= k) {//MAIN CONDITION
             insertionSort(arr + left, right - left + 1);
         } else {
             int mid = left + (right - left) / 2;

@@ -30,7 +30,7 @@ void Heapify(int* a, int i, int n){//heapifying index i element(making sure a[i]
 
 void buildMinHeap(int* a, int n){
    
-    for(int i=0;i<n/2;i++){//n/2 cuz leaf nodes are already heaps which satisfy
+    for(int i=0;i<n/2-1;i++){//n/2 cuz leaf nodes are already heaps which satisfy
         Heapify(a,i,n);
     }
    

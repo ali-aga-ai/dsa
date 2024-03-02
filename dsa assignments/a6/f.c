@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int mergeAndCount(int arr[], int temp[], int left, int mid, int right) {
+int mergeAndCount(int arr[], int temp[], int left, int mid, int right) {//merging with left mid and right known
     int i = left;
     int j = mid + 1;
     int k = left;
@@ -12,7 +12,7 @@ int mergeAndCount(int arr[], int temp[], int left, int mid, int right) {
             temp[k++] = arr[i++];
         } else {
             // If the next smallest element is from the right half,
-            // increment inversion count by the remaining elements in the left half.
+            //say i am at ith position i find an element on the right which is smaller than me, then all elements to the right of i in the left list willl be greater than that element
             inversionCount += mid - i + 1;
             temp[k++] = arr[j++];
         }
