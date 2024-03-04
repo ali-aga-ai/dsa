@@ -18,16 +18,17 @@ int main() {
     //a[1] to a[n] contain all elements, a[0] is irrelevant
 
     int b[n+1];
-    int idx[n+1];
+
+    int idx[n+1];// contains idx
     
     
-    int c[n+1];
+    int c[n+1];//c initially contains num frequency, then it contains cf
 
     for(int i=0; i<n+1; i++){
         c[i] = 0;
     }
     for(int i=0; i<n+1; i++){
-        b[i] = 0;
+        b[i] = -1;
     }
     for(int i=1; i<n+1; i++){
         c[a[i]]++;
@@ -36,54 +37,43 @@ int main() {
     for(int i=1; i<n+1; i++){
         c[i]+= c[i-1];
     }    
-     printf("a: ");
-    for(int i=0;i<n+1;i++){
-        printf("%d ",a[i]);
-    }
-        printf("\n");
-
-    //c[i] stores cumulative frequency c[0] indicates cf if we add all existing zeroes
-    printf("c: ");
-    for(int i=0;i<n+1;i++){
-        printf("%d ",c[i]);
-    }
-
-    
+    //c now has cf
     printf("\n");
-        printf("b: ");
-    
-    for(int i=1;i<n+1;i++){
+
+    int i=1;
+    while(i<n+1){
+        int p=0;
         
-        if(b[c[a[i]]]==0){
-            b[c[a[i]]] = a[i];
-            idx[c[a[i]]] =i;
+        while((a[i]==0 && c[a[i]]>1) || c[a[i]]>c[a[i]-1]+1 && b[c[a[i]]]==-1){
+            c[a[i]]--;
+            p++;
         }
-        
+        if(b[c[a[i]]]==-1){
+            b[c[a[i]]] = a[i];
+            idx[c[a[i]]] = i;
+            c[a[i]]+=p;
+        }
         else{
             
-            int p=0;
-            
-            
-            while(b[c[a[i]]]!=0){
-                
-                c[a[i]]--;
-                p++;
-                
+            while(b[c[a[i]]]!=-1){
+                c[a[i]]++;
+                p--;
             }
             
             b[c[a[i]]] = a[i];
-            idx[c[a[i]]] =i;
+            idx[c[a[i]]] = i;
             c[a[i]]+=p;
-            
-            
         }
-        }
- 
+        
+        i++;
+            
+    }
+    
     for(int i=1;i<n+1;i++){
             printf("%d ",b[i]);
     }
     
-    printf("\nidx: ");
+    printf("\n");
     
     for(int i=1;i<n+1;i++){
                 printf("%d ",idx[i]);

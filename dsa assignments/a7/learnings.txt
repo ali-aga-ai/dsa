@@ -10,3 +10,4 @@ void buildMaxHeap(int* a, int n) {
 
 start from n/2 to 0 not other way round cuz of inefficiencies
 
+Counting Sort is primarily designed for sorting collections of non-negative integers
