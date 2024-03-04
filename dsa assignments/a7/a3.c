@@ -54,7 +54,8 @@ int main() {
     if (len < 10) {
         // If the length is less than 10, pad with zeroes at the beginning
         memmove(a[i] + 10 - len, a[i], len + 1);  // +1 to include the null terminator
-        memset(a[i], '0', 10 - len);
+        //memmove(void* dest, const void* src, size_t n);
+        memset(a[i], '0', 10 - len);// memset(void* ptr, int value, size_t num);
     }
 }
 

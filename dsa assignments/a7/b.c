@@ -1,6 +1,4 @@
 //some issue with .8 and 9 input
-
-
 #include <stdio.h>
 #include <stdlib.h>
 

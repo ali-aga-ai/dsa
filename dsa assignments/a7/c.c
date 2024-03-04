@@ -40,32 +40,15 @@ int main() {
     //c now has cf
     printf("\n");
 
-    int i=1;
-    while(i<n+1){
-        int p=0;
+    int i=n;
+    while(i>=0){
         
-        while((a[i]==0 && c[a[i]]>1) || c[a[i]]>c[a[i]-1]+1 && b[c[a[i]]]==-1){
+            b[c[a[i]]] = a[i];
+            idx[c[a[i]]] = i;
             c[a[i]]--;
-            p++;
-        }
-        if(b[c[a[i]]]==-1){
-            b[c[a[i]]] = a[i];
-            idx[c[a[i]]] = i;
-            c[a[i]]+=p;
-        }
-        else{
-            
-            while(b[c[a[i]]]!=-1){
-                c[a[i]]++;
-                p--;
-            }
-            
-            b[c[a[i]]] = a[i];
-            idx[c[a[i]]] = i;
-            c[a[i]]+=p;
-        }
+    //by the end of this loop, c[i] contains the first index of occurrence of the element i in the final sorted array.
         
-        i++;
+        i--;
             
     }
     

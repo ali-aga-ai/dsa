@@ -65,9 +65,9 @@ int main() {
      
     while(k>0){
         
-        sum1+=a[0];
+        sum1+=a[0];//
         
-        if(sum1>sum2){
+        if(sum1>sum2){//this is because we want at max k elements, it is poosible that one element is negative and adding it causes issues
             int temp = a[0];
             a[0] = a[n-1];
             a[n-1] = temp;

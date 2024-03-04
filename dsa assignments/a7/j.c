@@ -1,4 +1,5 @@
-// maximise synergy + dps of max k elements out of n elements and find sum
+//form a minHeap based on Hp-x alongside its indices, remove min elements and print their indices
+
 #include <stdio.h>
 #include<stdlib.h>
 

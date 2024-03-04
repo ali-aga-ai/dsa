@@ -8,55 +8,62 @@ struct Node {
     struct Node* next;
 };
 
-void insertionSort(struct Node** bucket) {
+void insertionSort(struct Node** bucket, int n) {
     if (*bucket == NULL || (*bucket)->next == NULL) {
-        return;
+        return;  // If empty bucket or only one element, return
     }
 
-    struct Node* sorted = NULL;
+    float a[n];
     struct Node* current = *bucket;
 
-    while (current != NULL) {
-        struct Node* next = current->next;
-
-        if (sorted == NULL || sorted->val >= current->val) {
-            current->next = sorted;
-            sorted = current;
-        } else {
-            struct Node* temp = sorted;
-            while (temp->next != NULL && temp->next->val < current->val) {
-                temp = temp->next;
-            }
-            current->next = temp->next;
-            temp->next = current;
-        }
-
-        current = next;
+    // Store values in array
+    for (int i = 0; i < n; i++) {
+        a[i] = current->val;
+        current = current->next;
     }
 
-    *bucket = sorted;
+    // Perform Insertion Sort on array
+    for (int i = 1; i < n; i++) {
+        float key = a[i];
+        int j = i - 1;
+
+        while (j >= 0 && a[j] > key) {
+            a[j + 1] = a[j];
+            j = j - 1;
+        }
+        a[j + 1] = key;
+    }
+
+    current = *bucket;
+
+    // Update linked list with sorted values
+    for (int i = 0; i < n; i++) {
+        current->val = a[i];
+        current = current->next;
+    }
 }
 
 void bucketSort(float arr[], int n) {
     struct Node* buckets[n];
     int count[n];
-
+    
+    //all buckets are independant entities and not connected together
     for (int i = 0; i < n; i++) {
         buckets[i] = NULL;
         count[i] = 0;
-    }
+    }//creating n buckets 0...n-1 and setting their count to 0, a bucket is a singly linked list
 
     for (int i = 0; i < n; i++) {
-        int index = (int)(arr[i] * n);
+        int index = (int)(arr[i] * n);//same as arr[i]*n/1
         struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
         newNode->val = arr[i];
-        newNode->next = buckets[index];
+        newNode->next = buckets[index];//the first num in the bucket points to null, but the second one points to the one which was inserted before it
         buckets[index] = newNode;
         count[index]++;
     }
 
     for (int i = 0; i < n; i++) {
-        insertionSort(&buckets[i]);
+        insertionSort(&buckets[i],count[i]);
     }
 
     // Print the sorted array
