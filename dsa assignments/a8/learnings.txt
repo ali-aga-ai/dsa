@@ -1,0 +1,20 @@
+whwen referring to select it means generally selecting the ith smallest element
+
+to get INT_MIN or INT_MAX gotta import limits.h
+
+
+
+whenever you create a struct........say a struct of a stack, you must pass pointer of stack object as an arhument is pop() per se
+this is because when i create a Stack object as.........struct Stack stack = malloc..........
+
+the object is stored in a mem locn
+it has an array and a top element associated with it
+
+so if u do pop(struct Stack stack)........this would be like passing a stack value which isnt the case
+if you do pop(struct Stack *stack)........you are pasing a pointer to an object 
+
+
+
+
+
+

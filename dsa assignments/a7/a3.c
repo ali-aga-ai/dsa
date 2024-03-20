@@ -1,4 +1,6 @@
 //my logic with gpt help to append zeros
+//mem is generally dest src size
+//
 #include <stdio.h>
 #include <string.h>
 
@@ -31,7 +33,7 @@ void radixSort(int n, char a[n][11], int k) {
         char current_char = a[i][k];
         int index = (current_char >= 'A') ? (current_char - 'A' + 10) : (current_char - '0');
         c[index]--;
-        memcpy(b[c[index]], a[i], 11);
+        memcpy(b[c[index]], a[i], 11);//this is the countSort part
     }
 
     for (int i = 0; i < n; i++) {
