@@ -14,7 +14,17 @@ so if u do pop(struct Stack stack)........this would be like passing a stack val
 if you do pop(struct Stack *stack)........you are pasing a pointer to an object 
 
 
+Deque:
+    A deque is an extension of a queue that allows elements to be added or removed from both ends.
+    
+    It supports two-sided access: you can add or remove elements from either the front or the rear.
 
+    Besides enqueue and dequeue, a deque also provides operations like push_front (add to the front) and pop_back (remove from the rear).
+
+    Deques are useful when you need efficient access to both ends of the data structure.
+    
+    For example, they are commonly used in implementing algorithms like sliding window problems or maintaining a window of fixed size over 
+    a stream of data.
 
 
 
