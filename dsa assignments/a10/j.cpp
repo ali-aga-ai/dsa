@@ -1,41 +1,31 @@
-//consider only the main funciton, the DFS needs altering
-#include <iostream>
-#include <vector>
-#include <stack>
-#include <unordered_set> // To store visited nodes
-
+#include<bits/stdc++.h>
 using namespace std;
 
-vector<vector<int>> graph;//keeping this global because otherwise will have to pass as argument again and again
-vector<int> visited;
-stack<int> toVisit; //gray
+vector<vector<int>> graph;
+unordered_set<int> visited;
+stack<int> toVisit;
 
+int n;
 
-void pushEdge(int x, int y){ //creates adjacency list (not weighted adjacency matrix)
+void pushEdge(int x, int y){
     graph[x].push_back(y);
     graph[y].push_back(x);
 }
 
-// an elemenr being 'white' is the same as bfs not being done on it
 void dfs(int x){
-    cout<<x<<" ";
-    visited[x] = 1;
-    
-    int p =0;
-    
-    while(p<graph[x].size()){
-        // a problem of recolouring something gray might arise
-        if(visited[graph[x][p]]!=1){
-            int element = graph[x][p];
-            toVisit.push(element);
+    if(visited.find(x)== visited.end()){
+        visited.insert(x);
+        
+        for(int neighbour: graph[x]){//can do this cuz adj list NOT adj matrix
+            if(visited.find(neighbour)== visited.end())
+            toVisit.push(neighbour);
         }
-        p++;
-    }
-    
-    if(!toVisit.empty()){
-        int next = toVisit.top();
-        toVisit.pop();
-        dfs(next);
+        
+        if(!toVisit.empty()){
+            int y = toVisit.top();
+            toVisit.pop();
+            dfs(y);
+        }
     }
     
 }
@@ -43,25 +33,25 @@ void dfs(int x){
 
 int main() {
     
-    int n,m,x,y;//n is edges x and y are nodes input for edge
+    int n,m,a,b;
     
     cin>>n>>m;
-    graph.resize(n+1, vector<int>()); //2*n(2n cuz vertices cant be more than 2 times edges) (also assuming consecutive numbering for nodes) rows, unspecified columns
-    visited.resize(n+1,0);
+    
+    graph.resize(n+1,vector<int>());
     
     for(int i=0; i<m; i++){
-        cin>>x>>y;
-        pushEdge(x,y);
-    }
-    cout<<"bitch";
-    int count =0;
-    for(int i=1; i<=n; i++){
-        if(!visited[i]){
-            count++;
-            dfs(i);
-        }
+        cin>>a>>b;
+        pushEdge(a,b);
     }
     
-    cout<<"Count: "<<count;
+    int count = 0;
+    
+    for(int i=1; i<n+1; i++){
+        if(visited.find(i)==visited.end()){
+            dfs(i);
+            count++;
+        }
+    }
+    cout<<count;
     return 0;
 }
