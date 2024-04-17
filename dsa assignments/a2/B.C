@@ -1,4 +1,4 @@
-// Online C compiler to run C program online
+// Find peak
 #include <stdio.h>
 
 int binary_search(int array[], int len){//returns target index
@@ -10,17 +10,15 @@ int binary_search(int array[], int len){//returns target index
         int mid = left + (right - left) / 2;
         
         if(array[mid]>array[mid-1] && array[mid]>array[mid+1]){
-            printf("hello\n");
+
             return mid+1; //mid +1 cuz 1 indexed
             
         }
         else if(array[mid]<array[mid-1]){
             right = mid;
-            printf("haa\n");
         }
         else if(array[mid]<array[mid+1] ){
             left = mid;
-            printf("ehllo\n");
         }
         
 }
