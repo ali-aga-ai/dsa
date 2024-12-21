@@ -1,0 +1,31 @@
+ifdef is a preprocessor directive that checks if a macro (like _WIN32) is defined. If it is, the code within that block is compile
+
+_WIN32 is commonly defined when compiling for Windows systems (automatically by the compiler), enabling platform-specific code like Windows API calls.
+
+ LARGE_INTEGER is a Windows-specific data type. It is used in the Windows API to represent a 64-bit integer, typically for high-resolution time measurements (e.g., QueryPerformanceCounter results).
+
+ The range of a LARGE_INTEGER (a 64-bit signed integer) is:
+
+Minimum: -2^63 or -9,223,372,036,854,775,808
+Maximum: 2^63 - 1 or 9,223,372,036,854,775,807
+
+The range of a double (64-bit floating-point number in IEEE 754 format) is approximately:
+
+Minimum (positive): 2.2250738585072014 × 10^−308
+Maximum: 1.7976931348623157 × 10^308
+
+While a double covers a much broader numerical range, it may lose precision for very large or very small integers due to rounding errors that is because it rounds to an exponent and hence loses precision
+
+------
+
+ABOUT POINTERS
+
+u knew this already, but int* arr, is a pointer to the address of the first location. the pointer ADDRESS is not considered an integer, that is why you cannot do. int p = arr. p will not be able to store arr address, rather u would have to do int* p =arr
+
+now, as seen above, to get address of arr, u do int* p = arr. but if you were to do, int* p = arr[0]. this is WRONG, because doing arr[0] dereferences the pointer, and hence arr[0] stores to the value at the position arr. and arr[1] stores the value at the position arr + 1, and so on
+
+
+When you do malloc, the memory itself is typically uninitialized, meaning it contains random values unless you explicitly initialize it.THUS do NOT assume that it is initialised with null values.
+
+int **table means that it is a pointer to an array of pointers. 
+basically (int *) * ptr, which means pointer to an integer pointer.

@@ -20,6 +20,8 @@ void multiply(int n, int a[][n], int b[][n]){
 
 void matrix_exponentiation(int n, int a[][n], int p) {
     int result[n][n];
+
+
     for(int i = 0; i < n; i++) {
         for(int j = 0; j < n; j++) {
             if(i == j)
@@ -28,13 +30,17 @@ void matrix_exponentiation(int n, int a[][n], int p) {
                 result[i][j] = 0;
         }
     }
+
+    
     while(p > 0) {
         if(p % 2 != 0) {
-            multiply(n, result, a);
+            multiply(n, result, a);//multiply multiplies two n*n matrices
         }
         multiply(n, a, a);
         p /= 2;
     }
+
+
     // Copy the elements of the result matrix back to array a
     for(int i=0; i<n; i++) {
         for(int j=0; j<n; j++) {

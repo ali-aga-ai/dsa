@@ -17,7 +17,7 @@ int main(){
     }
     
     int result = n;
-
+    int p =0;//p represents component number
     for(int i=0; i<q; i++){
         
         scanf("%d %d",&u,&v);
@@ -30,26 +30,33 @@ int main(){
         else{
             if(component[u]==-1){// havent visited u
                 if(component[v]==-1){// havent visited u or v
-                    component[u] = 1;
-                    component[v] = 1;
+                    component[u] = p;
+                    component[v] = p;
+                    p++;
                     result--;
                     printf("%d ",result);
                 }
                 else{// havent visited u but visited v
-                    component[u] =1;
+                    component[u] =component[v];
                     result--;
                     printf("%d ",result);
                 }
             }  
             else{//  visited u
                 if(component[v]==-1){// visited u but not v
-                    component[v] =1;
+                    component[v] = component[u];
                     result--;
                     printf("%d ",result);
     
                 }
-                else{              //visited both already here is where code goes WRONG because what if u are joining two separate components      
+                else{ 
+                    if(component[u]!=component[v]){
+                        result--;
+                        printf("%d ",result);
+                    }
+                    else{
                     printf("%d ",result);
+                    }
                     
                 }
     

@@ -16,7 +16,7 @@ int main(){
         perUnitValue[i] = (float)weight[i][1] / weight[i][0]; // stores value per unit weight
     }
 
-    while(maxWeight!=0){
+    while(maxWeight!=0){// there can be a condition when all weights added together still are lesser than max Weight
         int max = -1;
 
         for(int i=0; i<n;i++){
@@ -29,6 +29,7 @@ int main(){
             maxWeight-=weight[max][0] ;
             maxValue += perUnitValue[max]*weight[max][0];
         }
+
         else{
             maxValue += perUnitValue[max]*maxWeight;
             break;

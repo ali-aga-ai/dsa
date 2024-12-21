@@ -1,53 +1,69 @@
+// Online C compiler to run C program online
 #include <stdio.h>
-#include <stdbool.h>
+#include <stdlib.h>
 
-bool isLeafNode(int* arr, int i, int n) {
-    if (2 * i > n) {
-        return true;
+int n;
+
+struct Node {
+    int val;
+    struct Node *right;
+    struct Node *left;
+};
+
+struct Node* createNode(int* arr, int i){
+    if(i<n+1){
+    struct Node* newNode = malloc(sizeof(struct Node));
+    if(arr[i]!= -1){
+    newNode->val = arr[i];
+    newNode->left = createNode(arr,2*i);
+    newNode->right = createNode(arr,2*i+1);}
+    else {newNode =NULL;}
+    
+    return newNode;
     }
-    return arr[2 * i] == -1 && arr[2 * i + 1] == -1;
+    else{return NULL;}
 }
 
-void removeNode(int* arr, int k, int n) {
-    if (k > n) {
-        return;
+void removeChild(struct Node* root, int val){
+    if(root!=NULL){
+    if(root->left->val == val){
+        root->left = NULL;
     }
-    arr[k] = -1;
-    removeNode(arr, 2 * k, n);
-    removeNode(arr, 2 * k + 1, n);
-}
-
-int max(int x, int y) {
-    return (x > y) ? x : y;
-}
-
-int height(int* arr, int i, int n) {
-    if (i > n || arr[i] == -1) {
-        return 0;
+    else if(root->right->val == val){
+        root->right =NULL;
     }
-    int leftHeight = height(arr, 2 * i, n);
-    int rightHeight = height(arr, 2 * i + 1, n);
-    return max(leftHeight, rightHeight) + 1;
+    else{
+        removeChild(root->left,val);
+        removeChild(root->right,val);
+    }
+    }
 }
 
+int height(struct Node* root){
+    if(root == NULL) return 0;
+    
+    int count = height(root->left)>height(root->right)? height(root->left) +1 :height(root->right) +1;
+    return count;
+    
+}
 int main() {
-    int n, k, j;
-    scanf("%d %d", &n, &k);
     
-    int a[n + 1];
-    a[0] = -1;
+    int k;
+    scanf("%d",&n);
+    scanf("%d",&k);
+    int a[n+1];
     
-    for (int i = 1; i <= n; i++) {
-        scanf("%d", &a[i]);
-        if (a[i] == k) {
-            j = i;
-        }
+    for(int i=1; i<n+1; i++){
+        scanf("%d",&a[i]);
     }
     
-    removeNode(a, j, n);
+    struct Node* root = malloc(sizeof(struct Node));
+
+    root = createNode(a,1);
     
-    int treeHeight = height(a, 1, n);
-    printf("Height of the modified tree: %d\n", treeHeight);
+    removeChild(root,k);
     
+    printf("%d",height(root));
+
     return 0;
 }

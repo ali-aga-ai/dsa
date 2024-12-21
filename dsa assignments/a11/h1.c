@@ -1,4 +1,3 @@
-//copied
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -9,6 +8,7 @@ struct TreeNode {
     int label;
     struct TreeNode *left;
     struct TreeNode *right;
+    struct TreeNode *parent;
 };
 
 // Function to count nodes at distance x from node k
@@ -22,6 +22,8 @@ int dfs(struct TreeNode *node, struct TreeNode *parent, int distances[], int x, 
     count += dfs(node->left, node, distances, x, distance + 1);
     // Recursive DFS for right child
     count += dfs(node->right, node, distances, x, distance + 1);
+    // Recursive DFS for parent node
+    // count += dfs(node->parent, node, distances, x, distance + 1);
 
     // Count nodes at distance x
     if (distances[node->label] == x) count++;
@@ -35,6 +37,7 @@ struct TreeNode *createNode(int label) {
     node->label = label;
     node->left = NULL;
     node->right = NULL;
+    node->parent = NULL;
     return node;
 }
 
@@ -57,8 +60,14 @@ int main() {
         nodes[i]->left = nodes[2 * i];
         nodes[i]->right = nodes[2 * i + 1];
     }
-
-    // Perform DFS from node k and count nodes at distance x
+    
+    for (int i = 1; i <= N; i++) {
+        if (nodes[i]->left)
+            nodes[i]->left->parent = nodes[i];
+        if (nodes[i]->right)
+            nodes[i]->right->parent = nodes[i];
+    }
+    
     int result = dfs(nodes[k], NULL, distances, x, 0);
     printf("%d\n", result);
 

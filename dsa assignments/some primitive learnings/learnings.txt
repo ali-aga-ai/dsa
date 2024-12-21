@@ -1,0 +1,17 @@
+if there are consecutive if statements all of them will be checked 
+if1 if2 if3....say if1 is false it doesnt mean if2 and if3 wont be checked
+but say if1 else if2....then say if1 is true else will be skipped and if2 will be evaluated
+say if else if() if2....say if fails then else if checked if2 is checked regardless
+say if elseif1 elseif2....say if fails and elseif1 is valid elseif2 wont be evaluated... 
+but say if and elseif1 are both false then elseif2 will be evaluated
+a series of if, else if, and optionally, else statements,If the condition in the first if statement is true, 
+the subsequent else if and else statements will be skipped entirely, 
+
+
+
+
+
+
+
+
+
